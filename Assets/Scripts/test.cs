@@ -13,7 +13,7 @@ public class test : MonoBehaviour
 
 	public bool ConnectionTest() {
 
-		string connection = "Server=localhost;Database=job;userid=root;password=park;";
+		string connection = "Server=192.168.45.214;Database=job;userid=root;password=park;";
 
 		try {
 			using (MySqlConnection conn = new MySqlConnection(connection)) {
