@@ -1,11 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Security;
+using System.Net;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.Networking;
 
 public class api : MonoBehaviour
 {
-    private string apiUrl = "https://192.168.45.214:3000/player/";
+	private void Start() {
+		ServicePointManager.ServerCertificateValidationCallback =
+			delegate (object sender, X509Certificate cert, X509Chain chain, SslPolicyErrors sslPolicyErrors) {
+				return true;  // 인증서 오류 무시
+			};
+
+	}
+	private string apiUrl = "http://192.168.45.214:3000/player/";
 
     public void GetPlayerData(string playerId) {
 		Debug.Log("Getting player data for ID: " + playerId);
